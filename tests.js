@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 const { expect } = require('chai')
-const reconcileOrder = require('./orderBook')
+const { reconcileOrder } = require('./orderBook')
 
 describe('Order Book', () => {
   describe('reconcileOrder', () => {
-    it('adds an order to the book when the book is empty and thus cannot fulfill the order', () => {
+    it.only('adds an order to the book when the book is empty and thus cannot fulfill the order', () => {
       const existingBook = []
       const incomingOrder = { type: 'sell', quantity: 10, price: 6150 }
 
@@ -25,7 +25,7 @@ describe('Order Book', () => {
       ])
     })
 
-    it('adds an order to the book when the book has a corresponding order type but it does not match', () => {
+    it('adds an order to the book when the book has a corresponding order type but it does not match on quantity and price', () => {
       const existingBook = [{ type: 'buy', quantity: 10, price: 6000 }]
       const incomingOrder = { type: 'sell', quantity: 12, price: 6150 }
 
